@@ -1,0 +1,266 @@
+main.channel {
+  height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+main.channel[hidden] {
+  display: none;
+}
+
+main.channel h1 {
+  width: 100%;
+  padding-bottom: 30px;
+  text-align: center;
+  font-weight: 900;
+}
+
+main.channel nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--accent-color);
+  border-radius: 5px 5px 0 0;
+}
+
+.channel nav .channel-name {
+  color: white;
+}
+
+.channel nav .leave-channel {
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+.channel .channel-name::before {
+  content: 'Channel:';
+  margin-right: 10px;
+}
+
+.channel .container {
+  flex: 1;
+  display: flex;
+  gap: 5px;
+}
+
+.channel .container .main-video-wrapper {
+  flex: 8;
+  border: var(--main-border);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.channel .container .main-video-wrapper video {
+  width: 100%;
+  height: 100%;
+}
+
+.channel .container .side-bar-wrapper {
+  flex: 2;
+}
+
+.channel .container .side-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 5px;
+}
+
+.channel .container .side-bar-wrapper .sub-video-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--main-border);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.channel .container .side-bar-wrapper .sub-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.channel .sub-video-wrapper .input-controllers {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 7px;
+}
+
+.channel .input-controllers .mic-toggle,
+.channel .input-controllers .cam-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.channel .input-controllers .mic-toggle.off,
+.channel .input-controllers .cam-toggle.off {
+  color: red;
+}
+
+.channel .mic-toggle.on i:last-child {
+  display: none;
+}
+
+.channel .mic-toggle.off i:first-child {
+  display: none;
+}
+
+.channel .cam-toggle.on i:last-child {
+  display: none;
+}
+
+.channel .cam-toggle.off i:first-child {
+  display: none;
+}
+
+.channel .container .side-bar-wrapper .chat-box {
+  flex: 1;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  border: var(--main-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list li {
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list li::after {
+  --pointer-size: 5px;
+  content: '';
+  position: absolute;
+
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: var(--pointer-size) solid transparent;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list li .sender-name {
+  font-size: 10px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list li .sender-name::after {
+  content: ':';
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list .me {
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list .me::after {
+  right: 0;
+  border-left-color: white;
+  border-right: 0;
+  margin-top: calc(-1 * var(--pointer-size));
+  margin-right: calc(-1 * var(--pointer-size));
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list .other::after {
+  left: 0;
+  border-right-color: white;
+  border-left: 0;
+  margin-top: calc(-1 * var(--pointer-size));
+  margin-left: calc(-1 * var(--pointer-size));
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list .notice {
+  font-size: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-list .notice .sender-name {
+  display: none;
+}
+
+.channel .container .side-bar-wrapper .chat-box .participants {
+  padding: 5px;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.channel .container .side-bar-wrapper .chat-box .participants::before {
+  content: 'participants:';
+  font-size: 10px;
+  width: 100%;
+}
+
+.channel .container .side-bar-wrapper .chat-box .participants li {
+  color: white;
+}
+
+.channel .container .side-bar-wrapper .chat-box .participants li:not(:last-child)::after {
+  content: ', ';
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-form {
+  height: 60px;
+  display: flex;
+  background-color: var(--accent-color);
+  gap: 2px;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-form textarea {
+  border: none;
+  border-radius: 3px 10px 3px 3px;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  padding: 6px;
+  background-color: white;
+}
+
+.channel .container .side-bar-wrapper .chat-box .chat-form button {
+  background-color: var(--accent-color);
+  border: none;
+  width: 50px;
+  font-size: 18px;
+  color: white;
+}

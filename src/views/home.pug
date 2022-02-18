@@ -12,6 +12,7 @@ html(lang="en")
     //- link(rel="stylesheet", href="../public/css/channel.css")
     link(rel="stylesheet", href="/public/css/style.css")
     link(rel="stylesheet", href="/public/css/home.css")
+    link(rel="stylesheet", href="/public/css/channel.css")
   body
     main.home
       h1 Noom
@@ -35,4 +36,29 @@ html(lang="en")
         span.copyright
           | Created by&nbsp
           a(href="https://github.com/jinyongp" target="_blank" ref="noopener noreferer") jinyongp
+    main.channel(hidden)
+      h1 Noom
+      nav
+        h2.channel-name
+        button.leave-channel Leave
+      div.container
+        section.main-video-wrapper
+          video(autoplay playsinline)
+        aside.side-bar-wrapper
+          div.sub-video-wrapper
+            video(autoplay playsinline)
+            div.input-controllers
+              button.mic-toggle.off
+                i.fas.fa-microphone
+                i.fas.fa-microphone-slash
+              button.cam-toggle.on
+                i.fas.fa-video
+                i.fas.fa-video-slash
+          div.chat-box
+            ul.participants
+            ul.chat-list
+            form.chat-form
+              textarea
+              button
+                i.fas.fa-arrow-up
     script(src="/socket.io/socket.io.js")

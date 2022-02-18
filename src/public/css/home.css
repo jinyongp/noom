@@ -1,0 +1,246 @@
+.home {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home[hidden] {
+  display: none;
+}
+
+.home h1 {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 50px;
+  font-weight: 900;
+  color: var(--accent-color);
+}
+
+.home .create-channel-form {
+  width: 50%;
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  background-color: white;
+  padding: 3px;
+  margin-bottom: 10px;
+  border-radius: 13px;
+  position: relative;
+}
+
+.home .create-channel-form small.full {
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: -13px;
+}
+
+.home .create-channel-form input {
+  flex: 1;
+  padding: 0 20px;
+  font-size: 1em;
+  color: black;
+  font-weight: 600;
+  border: 2px solid var(--accent-color);
+  border-radius: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  outline: none;
+}
+
+.home .create-channel-form button {
+  padding: 0 10px;
+  width: 60px;
+  white-space: nowrap;
+  font-size: 1em;
+  background-color: var(--accent-color);
+  border-width: 0;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.home .create-channel-form button:active {
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+.home .create-channel-form button i {
+  font-size: 1.5em;
+  color: white;
+}
+
+.home .channel-list {
+  width: 100%;
+  border-radius: 13px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+}
+
+.home .channel-list .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-color: var(--accent-color);
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.home .channel-list .header .nickname-form {
+  border-radius: 10px;
+  background-color: white;
+}
+
+.home .channel-list .header .nickname-form input {
+  border: none;
+  font-size: 16px;
+  padding: 5px 0px 5px 15px;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.home .channel-list .header .nickname-form button {
+  background-color: transparent;
+  border: none;
+  padding: 0 10px;
+  cursor: pointer;
+  color: var(--accent-color);
+}
+
+.home .channel-list .header .nickname-form i {
+  display: none;
+}
+
+.home .channel-list .header .nickname-form.changed button i:first-child {
+  display: inline-block;
+}
+
+.home .channel-list .header .nickname-form.changing button i:last-child {
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+}
+
+.home .channel-list .header .nickname-form.changing button i:last-child {
+  display: inline-block;
+  color: green;
+}
+
+.home .channel-list .header .active-count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.home .channel-list .header .active-count::before {
+  content: '# of active channels ';
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.home .channel-list ul {
+  border: var(--main-border);
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  list-style: none;
+  padding: 10px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.home .channel-list ul:empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .channel-list ul:empty::after {
+  content: '새로운 채널을 열어주세요!';
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.home .channel-list ul li {
+  overflow: hidden;
+  display: flex;
+  height: 60px;
+  cursor: pointer;
+  width: 105%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.home .channel-list ul li:last-child {
+  border-bottom: none;
+}
+
+.home .channel-list ul li h3 {
+  flex: 1;
+  /* padding: 18px 5px 10px 5px; */
+  padding: 5px;
+  position: relative;
+}
+
+.home .channel-list ul li:hover h3 {
+  color: var(--accent-color);
+}
+
+/* .home .channel-list ul li h3::before {
+  content: 'ID ' attr(data-channel-id);
+  position: absolute;
+  font-size: 10px;
+  top: 6px;
+  color: rgba(0, 0, 0, 0.3);
+} */
+
+.home .channel-list ul li div {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+  color: var(--accent-color);
+}
+
+.home .channel-list ul li:hover div {
+  transform: translateX(-45px);
+  opacity: 1;
+}
+
+.home footer {
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.home footer .super-cool {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.home footer .copyright,
+.home footer .copyright a {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}

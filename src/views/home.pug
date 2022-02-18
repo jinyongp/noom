@@ -5,7 +5,34 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Noom
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+
+    //- link(rel="stylesheet", href="../public/css/style.css")
+    //- link(rel="stylesheet", href="../public/css/home.css")
+    //- link(rel="stylesheet", href="../public/css/channel.css")
     link(rel="stylesheet", href="/public/css/style.css")
+    link(rel="stylesheet", href="/public/css/home.css")
   body
+    main.home
+      h1 Noom
+      form.create-channel-form
+        input(placeholder="채널을 생성해주세요!" required type="text" name="channel")
+        button(type="submit")
+          i.fas.fa-sign-in-alt
+        small.full
+      section.channel-list
+        div.header
+          h2 Channels
+          form.nickname-form.changed
+            input(placeholder="닉네임을 써야해요!" required type="text" name="nickname")
+            button(type="submit")
+              i.fas.fa-check
+              i.fas.fa-spinner
+          span.active-count 0
+        ul
+      footer
+        span.super-cool Zoom Clone Challenge by NomadCoders 🔥
+        span.copyright
+          | Created by&nbsp
+          a(href="https://github.com/jinyongp" target="_blank" ref="noopener noreferer") jinyongp
     script(src="/socket.io/socket.io.js")
-    script(src="/public/js/app.js")

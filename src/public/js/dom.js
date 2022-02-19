@@ -71,6 +71,10 @@ function leaveChannel(cb) {
     turnOffMicIcon();
     turnOffCamIcon();
     closeUserMedia();
+    micSelect.innerHTML = '';
+    camSelect.innerHTML = '';
+    participants.innerHTML = '';
+    channelName.textContent = '';
     typeof cb === 'function' && cb();
   });
 }

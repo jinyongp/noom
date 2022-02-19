@@ -4,8 +4,15 @@ socket.on('init_nickname', (nickname) => {
   currentNickname = nickname;
 });
 
-socket.on('someone_joined', (nickname, participantList) => {
+socket.on('someone_joined', (nickname) => {
+  addNewMessage('notice', `${nickname}님이 입장했습니다.`);
+});
+
+socket.on('someone_left', (nickname) => {
+  addNewMessage('notice', `${nickname}님이 퇴장했습니다.`);
+});
+
+socket.on('participants', (participantList) => {
   participants.innerHTML = '';
   participantList.forEach(addNewParticipant);
-  addNewMessage('notice', `${nickname}님이 입장했습니다.`);
 });

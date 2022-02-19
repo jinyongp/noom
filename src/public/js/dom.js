@@ -56,6 +56,19 @@ function enterChannel(channel, cb) {
 }
 
 /**
+ * @param {function} cb
+ */
+function leaveChannel(cb) {
+  socket.emit('leave_channel', currentChannel, () => {
+    currentChannel = '';
+    chatList.innerHTML = '';
+    chatForm.querySelector('textarea').textContent = '';
+    selectScreen('home');
+    typeof cb === 'function' && cb();
+  });
+}
+
+/**
  * @param {'me' | 'other' | 'notice'} type
  * @param {string} message
  * @param {string} nickname

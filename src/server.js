@@ -35,10 +35,16 @@ wsServer.on('connection', (socket) => {
 
   socket.on('enter_channel', (channel, done) => {
     socket.join(channel);
-    wsServer.sockets
-      .to(channel)
-      .emit('someone_joined', socket.nickname, getParticipantsInChannel(channel));
+    socket.to(channel).emit('someone_joined', socket.nickname);
+    wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
     done(channel);
+  });
+
+  socket.on('leave_channel', (channel, done) => {
+    socket.leave(channel);
+    socket.to(channel).emit('someone_left', socket.nickname);
+    wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
+    done();
   });
 });
 

@@ -1,0 +1,3 @@
+leaveChannelButton.addEventListener('click', () => {
+  leaveChannel();
+});

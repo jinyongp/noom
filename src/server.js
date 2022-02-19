@@ -19,8 +19,12 @@ const wsServer = SocketIO(httpServer);
 
 function getPublicChannels() {
   return Array.from(wsServer.sockets.adapter.rooms)
-    .filter(([sid, channels]) => !channels.has(sid))
+    .filter(([sid, channels]) => !channels.has(sid) && countUserNumber(sid) < 2)
     .map(([channel]) => channel);
+}
+
+function countUserNumber(channel) {
+  return wsServer.sockets.adapter.rooms.get(channel)?.size || 0;
 }
 
 function getParticipantsInChannel(channel) {
@@ -41,11 +45,15 @@ wsServer.on('connection', (socket) => {
   });
 
   socket.on('enter_channel', (channel, done) => {
-    socket.join(channel);
-    socket.to(channel).emit('someone_joined', socket.nickname);
-    wsServer.sockets.emit('channel_list', getPublicChannels());
-    wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
-    done(channel);
+    if (countUserNumber(channel) >= 2) {
+      socket.emit('full_channel', channel);
+    } else {
+      socket.join(channel);
+      socket.to(channel).emit('someone_joined', socket.nickname);
+      wsServer.sockets.emit('channel_list', getPublicChannels());
+      wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
+      done(channel);
+    }
   });
 
   socket.on('leave_channel', (channel, done) => {

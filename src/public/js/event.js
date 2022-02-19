@@ -23,3 +23,9 @@ socket.on('participants', (participantList) => {
   participants.innerHTML = '';
   participantList.forEach(addNewParticipant);
 });
+
+socket.on('full_channel', (channel) => {
+  createChannelForm.elements.channel.value = '';
+  createChannelForm.elements.channel.focus();
+  fullMessage.textContent = `"${channel}"은 이미 누군가 사용 중이에요.`;
+});

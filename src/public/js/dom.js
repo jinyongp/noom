@@ -26,3 +26,63 @@ const chatForm = chatBox.querySelector('.chat-form');
 const participants = chatBox.querySelector('.participants');
 
 let currentNickname = '';
+
+/**
+ *
+ * @param {'home' | 'channel'} screen
+ */
+function selectScreen(screen) {
+  if (screen === 'home') {
+    homeScreen.hidden = false;
+    channelScreen.hidden = true;
+  } else {
+    homeScreen.hidden = true;
+    channelScreen.hidden = false;
+  }
+  createChannelForm.classList.remove('full');
+}
+
+/**
+ * @param {string} channel
+ * @param {function} cb
+ */
+function enterChannel(channel, cb) {
+  socket.emit('enter_channel', channel, () => {
+    selectScreen('channel');
+    currentChannel = channel;
+    channelName.textContent = channel;
+    typeof cb === 'function' && cb();
+  });
+}
+
+/**
+ * @param {'me' | 'other' | 'notice'} type
+ * @param {string} message
+ * @param {string} nickname
+ */
+function addNewMessage(type, message, nickname = '') {
+  const li = document.createElement('li');
+  const senderName = document.createElement('span');
+  const messageText = document.createElement('span');
+
+  li.classList.add(type);
+  senderName.classList.add('sender-name');
+  messageText.classList.add('message');
+
+  senderName.textContent = nickname;
+  messageText.textContent = message;
+
+  li.appendChild(senderName);
+  li.appendChild(messageText);
+
+  chatList.appendChild(li);
+}
+
+/**
+ * @param {string} nickname
+ */
+function addNewParticipant(nickname) {
+  const li = document.createElement('li');
+  li.textContent = nickname;
+  participants.appendChild(li);
+}

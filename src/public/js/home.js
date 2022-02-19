@@ -9,3 +9,11 @@ nicknameForm.addEventListener('submit', (event) => {
     nicknameForm.classList.add('changed');
   });
 });
+
+createChannelForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const input = event.target.elements.channel;
+  enterChannel(input.value, () => {
+    input.value = '';
+  });
+});

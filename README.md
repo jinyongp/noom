@@ -5,7 +5,7 @@ Zoom Clone Using NodeJS, WebRTC and Websocket.
 ## Todo List
 
 - [x] 닉네임 설정 및 변경
-- [ ] 채널 생성, 입장
+- [x] 채널 생성, 입장
 - [ ] 채널 퇴장
 - [ ] 채널 목록 확인
 - [ ] 채널 당 최대인원 두 명 제한

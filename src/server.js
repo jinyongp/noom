@@ -17,6 +17,11 @@ const httpServer = http.createServer(app);
  */
 const wsServer = SocketIO(httpServer);
 
+function getParticipantsInChannel(channel) {
+  const clientId = wsServer.sockets.adapter.rooms.get(channel);
+  return [...clientId].map((id) => wsServer.sockets.sockets.get(id).nickname);
+}
+
 let userId = 1;
 
 wsServer.on('connection', (socket) => {
@@ -26,6 +31,14 @@ wsServer.on('connection', (socket) => {
   socket.on('update_nickname', (nickname, done) => {
     socket.nickname = nickname;
     setTimeout(done, 500);
+  });
+
+  socket.on('enter_channel', (channel, done) => {
+    socket.join(channel);
+    wsServer.sockets
+      .to(channel)
+      .emit('someone_joined', socket.nickname, getParticipantsInChannel(channel));
+    done(channel);
   });
 });
 

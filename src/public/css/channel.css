@@ -16,6 +16,7 @@ main.channel h1 {
   padding-bottom: 30px;
   text-align: center;
   font-weight: 900;
+  color: var(--accent-color);
 }
 
 main.channel nav {
@@ -54,7 +55,7 @@ main.channel nav {
 }
 
 .channel .container .main-video-wrapper {
-  flex: 8;
+  width: 100%;
   border: var(--main-border);
   border-top: none;
   border-radius: 0 0 5px 5px;
@@ -68,13 +69,9 @@ main.channel nav {
 }
 
 .channel .container .side-bar-wrapper {
-  flex: 2;
-}
-
-.channel .container .side-bar-wrapper {
+  width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
   align-items: stretch;
   gap: 5px;
 }
@@ -82,25 +79,36 @@ main.channel nav {
 .channel .container .side-bar-wrapper .sub-video-wrapper {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   border: var(--main-border);
   border-top: none;
   border-radius: 0 0 5px 5px;
   aspect-ratio: 4/3;
   overflow: hidden;
+  background-color: var(--accent-color);
 }
 
 .channel .container .side-bar-wrapper .sub-video-wrapper video {
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: white;
+}
+
+.channel .container .side-bar-wrapper .sub-video-wrapper .camera-select {
+  margin: 3px 0;
+  border: none;
+  border-radius: 3px;
+  padding: 3px;
+  outline: none;
+  text-overflow: clip;
+  overflow: hidden;
 }
 
 .channel .sub-video-wrapper .input-controllers {
   position: absolute;
   right: 20px;
-  bottom: 10px;
+  bottom: 40px;
   border-radius: 10px;
   display: flex;
   gap: 7px;
@@ -208,7 +216,7 @@ main.channel nav {
 .channel .container .side-bar-wrapper .chat-box .chat-list .notice {
   font-size: 12px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
   background-color: rgba(0, 0, 0, 0.6);
 }
 

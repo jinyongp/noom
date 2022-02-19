@@ -3,3 +3,9 @@ socket.on('init_nickname', (nickname) => {
   input.value = nickname;
   currentNickname = nickname;
 });
+
+socket.on('someone_joined', (nickname, participantList) => {
+  participants.innerHTML = '';
+  participantList.forEach(addNewParticipant);
+  addNewMessage('notice', `${nickname}님이 입장했습니다.`);
+});

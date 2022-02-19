@@ -17,6 +17,12 @@ const httpServer = http.createServer(app);
  */
 const wsServer = SocketIO(httpServer);
 
+function getPublicChannels() {
+  return Array.from(wsServer.sockets.adapter.rooms)
+    .filter(([sid, channels]) => !channels.has(sid))
+    .map(([channel]) => channel);
+}
+
 function getParticipantsInChannel(channel) {
   const clientId = wsServer.sockets.adapter.rooms.get(channel);
   return [...clientId].map((id) => wsServer.sockets.sockets.get(id).nickname);
@@ -27,6 +33,7 @@ let userId = 1;
 wsServer.on('connection', (socket) => {
   socket['nickname'] = '익명' + userId++;
   socket.emit('init_nickname', socket.nickname);
+  socket.emit('channel_list', getPublicChannels());
 
   socket.on('update_nickname', (nickname, done) => {
     socket.nickname = nickname;
@@ -36,6 +43,7 @@ wsServer.on('connection', (socket) => {
   socket.on('enter_channel', (channel, done) => {
     socket.join(channel);
     socket.to(channel).emit('someone_joined', socket.nickname);
+    wsServer.sockets.emit('channel_list', getPublicChannels());
     wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
     done(channel);
   });
@@ -43,6 +51,7 @@ wsServer.on('connection', (socket) => {
   socket.on('leave_channel', (channel, done) => {
     socket.leave(channel);
     socket.to(channel).emit('someone_left', socket.nickname);
+    wsServer.sockets.emit('channel_list', getPublicChannels());
     wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
     done();
   });

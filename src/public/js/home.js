@@ -17,3 +17,9 @@ createChannelForm.addEventListener('submit', (event) => {
     input.value = '';
   });
 });
+
+channelList.addEventListener('click', (event) => {
+  const channel = event.target.closest('.channel-item');
+  if (!channel || !channelList.contains(channel)) return;
+  enterChannel(channel.dataset.name);
+});

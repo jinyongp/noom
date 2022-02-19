@@ -4,6 +4,13 @@ socket.on('init_nickname', (nickname) => {
   currentNickname = nickname;
 });
 
+socket.on('channel_list', (channels) => {
+  channelList.innerHTML = '';
+  console.log(channels);
+  channels.forEach(addNewChannel);
+  channelActiveCount.textContent = channels.length;
+});
+
 socket.on('someone_joined', (nickname) => {
   addNewMessage('notice', `${nickname}님이 입장했습니다.`);
 });

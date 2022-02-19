@@ -99,3 +99,23 @@ function addNewParticipant(nickname) {
   li.textContent = nickname;
   participants.appendChild(li);
 }
+
+/**
+ * @param {string} channel
+ */
+function addNewChannel(channel) {
+  const li = document.createElement('li');
+  const h3 = document.createElement('h3');
+  const div = document.createElement('div');
+  const i = document.createElement('i');
+
+  h3.textContent = channel;
+  i.classList.add('fas', 'fa-sign-in-alt');
+  li.appendChild(h3);
+  li.appendChild(div);
+  div.appendChild(i);
+  li.classList.add('channel-item');
+  li.dataset.name = channel;
+
+  channelList.appendChild(li);
+}

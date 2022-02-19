@@ -49,10 +49,11 @@ function selectScreen(screen) {
  * @param {function} cb
  */
 function enterChannel(channel, cb) {
-  socket.emit('enter_channel', channel, () => {
+  socket.emit('enter_channel', channel, async () => {
     selectScreen('channel');
     currentChannel = channel;
     channelName.textContent = channel;
+    await initMedia();
     typeof cb === 'function' && cb();
   });
 }
@@ -171,8 +172,4 @@ function addCamOption(value, label, currentCam) {
   if (currentCam === label) option.selected = true;
   camSelect.appendChild(option);
   camSelect.appendChild(option);
-}
-
-function selectMicOption(value) {
-  myMediaStream.getAudioTracks()[0];
 }

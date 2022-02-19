@@ -40,6 +40,11 @@ html(lang="en")
       h1 Noom
       nav
         h2.channel-name
+        details.device-select-button
+          summary.fas.fa-bars
+          div.select-box
+            select.mic-select
+            select.cam-select
         button.leave-channel Leave
       div.container
         section.main-video-wrapper
@@ -54,8 +59,6 @@ html(lang="en")
               button.cam-toggle.on
                 i.fas.fa-video
                 i.fas.fa-video-slash
-            select.mic-select
-            select.cam-select
           div.chat-box
             ul.participants
             ul.chat-list
@@ -67,6 +70,7 @@ html(lang="en")
     script(src="/public/js/init.js")
     script(src="/public/js/dom.js")
     script(src="/public/js/media.js")
+    script(src="/public/js/signaling.js")
     script(src="/public/js/event.js")
     script(src="/public/js/home.js")
     script(src="/public/js/channel.js")

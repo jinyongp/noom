@@ -10,8 +10,9 @@ socket.on('channel_list', (channels) => {
   channelActiveCount.textContent = channels.length;
 });
 
-socket.on('someone_joined', (nickname) => {
+socket.on('someone_joined', async (nickname) => {
   addNewMessage('notice', `${nickname}님이 입장했습니다.`);
+  setTimeout(sendOffer, 300);
 });
 
 socket.on('someone_left', (nickname) => {

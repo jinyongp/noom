@@ -15,14 +15,11 @@ createChannelForm.addEventListener('submit', (event) => {
   const input = event.target.elements.channel;
   enterChannel(input.value, () => {
     input.value = '';
-    initMedia();
   });
 });
 
 channelList.addEventListener('click', (event) => {
   const channel = event.target.closest('.channel-item');
   if (!channel || !channelList.contains(channel)) return;
-  enterChannel(channel.dataset.name, () => {
-    initUserMedia();
-  });
+  enterChannel(channel.dataset.name);
 });

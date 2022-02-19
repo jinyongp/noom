@@ -63,6 +63,18 @@ wsServer.on('connection', (socket) => {
     wsServer.sockets.to(channel).emit('participants', getParticipantsInChannel(channel));
     done();
   });
+
+  socket.on('offer', (offer, channel) => {
+    socket.to(channel).emit('offer', offer);
+  });
+
+  socket.on('answer', (answer, channel) => {
+    socket.to(channel).emit('answer', answer);
+  });
+
+  socket.on('ice', (icecandidate, channel) => {
+    socket.to(channel).emit('ice', icecandidate);
+  });
 });
 
 httpServer.listen(3000, () => console.log(`Server is running on http://localhost:3000`));

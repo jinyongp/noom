@@ -25,7 +25,7 @@ function getPublicChannels() {
 
 function getParticipantsInChannel(channel) {
   const clientId = wsServer.sockets.adapter.rooms.get(channel);
-  return [...clientId].map((id) => wsServer.sockets.sockets.get(id).nickname);
+  return clientId ? [...clientId].map((id) => wsServer.sockets.sockets.get(id).nickname) : [];
 }
 
 let userId = 1;

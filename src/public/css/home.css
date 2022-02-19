@@ -100,12 +100,13 @@
 .home .channel-list .header .nickname-form {
   border-radius: 10px;
   background-color: white;
+  position: relative;
 }
 
 .home .channel-list .header .nickname-form input {
   border: none;
   font-size: 16px;
-  padding: 5px 0px 5px 15px;
+  padding: 5px 30px 5px 10px;
   background-color: transparent;
   color: rgba(0, 0, 0, 0.8);
 }
@@ -113,9 +114,12 @@
 .home .channel-list .header .nickname-form button {
   background-color: transparent;
   border: none;
-  padding: 0 10px;
   cursor: pointer;
   color: var(--accent-color);
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  position: absolute;
 }
 
 .home .channel-list .header .nickname-form i {

@@ -25,7 +25,7 @@ html(lang="en")
         div.header
           h2 Channels
           form.nickname-form.changed
-            input(placeholder="닉네임을 써야해요!" required type="text" name="nickname")
+            input(placeholder="닉네임을 써야해요!" required type="text" name="nickname" maxlength="15")
             button(type="submit")
               i.fas.fa-check
               i.fas.fa-spinner
@@ -47,6 +47,7 @@ html(lang="en")
         aside.side-bar-wrapper
           div.sub-video-wrapper
             video(autoplay playsinline)
+            select.camera-select
             div.input-controllers
               button.mic-toggle.off
                 i.fas.fa-microphone
@@ -62,3 +63,6 @@ html(lang="en")
               button
                 i.fas.fa-arrow-up
     script(src="/socket.io/socket.io.js")
+    script(src="/public/js/dom.js")
+    script(src="/public/js/event.js")
+    script(src="/public/js/home.js")

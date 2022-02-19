@@ -10,13 +10,15 @@ socket.on('channel_list', (channels) => {
   channelActiveCount.textContent = channels.length;
 });
 
-socket.on('someone_joined', async (nickname) => {
+socket.on('someone_joined', (nickname) => {
   addNewMessage('notice', `${nickname}님이 입장했습니다.`);
+  initPeerConnection();
   setTimeout(sendOffer, 300);
 });
 
 socket.on('someone_left', (nickname) => {
   addNewMessage('notice', `${nickname}님이 퇴장했습니다.`);
+  closePeerConnection();
 });
 
 socket.on('participants', (participantList) => {

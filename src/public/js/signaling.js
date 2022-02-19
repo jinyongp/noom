@@ -3,21 +3,25 @@
  */
 let peerConnection = null;
 
-async function initPeerConnection() {
+function initPeerConnection() {
   peerConnection = new RTCPeerConnection();
   peerConnection.addEventListener('icecandidate', (data) => {
     socket.emit('ice', data.candidate, currentChannel);
   });
   peerConnection.addEventListener('track', (data) => {
-    console.log(data);
     peerVideo.srcObject = data.streams[0];
   });
   myMediaStream.getTracks().forEach((track) => peerConnection.addTrack(track, myMediaStream));
 }
 
+function closePeerConnection() {
+  peerConnection.close();
+  peerConnection = null;
+  peerVideo.srcObject = null;
+}
+
 async function sendOffer() {
   console.log('Send Offer');
-  if (!peerConnection) initPeerConnection();
   const offer = await peerConnection.createOffer();
   await peerConnection.setLocalDescription(offer);
   socket.emit('offer', offer, currentChannel);
@@ -25,7 +29,6 @@ async function sendOffer() {
 
 async function sendAnswer(offer) {
   console.log('Send Answer');
-  if (!peerConnection) initPeerConnection();
   await peerConnection.setRemoteDescription(offer);
   const answer = await peerConnection.createAnswer();
   await peerConnection.setLocalDescription(answer);

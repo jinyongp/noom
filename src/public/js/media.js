@@ -29,6 +29,10 @@ async function startUserMedia(constraints) {
   }
 }
 
+function closeUserMedia() {
+  myMediaStream.getTracks().forEach((track) => track.stop());
+}
+
 async function initSelectDevices() {
   try {
     const mics = await getDevices('audioinput');

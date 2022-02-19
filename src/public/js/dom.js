@@ -54,6 +54,7 @@ function enterChannel(channel, cb) {
     currentChannel = channel;
     channelName.textContent = channel;
     await initMedia();
+    initPeerConnection();
     typeof cb === 'function' && cb();
   });
 }
@@ -67,6 +68,9 @@ function leaveChannel(cb) {
     chatList.innerHTML = '';
     chatForm.querySelector('textarea').textContent = '';
     selectScreen('home');
+    turnOffMicIcon();
+    turnOffCamIcon();
+    closeUserMedia();
     typeof cb === 'function' && cb();
   });
 }

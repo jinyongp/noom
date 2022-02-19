@@ -1,6 +1,6 @@
 import express from 'express';
 import http from 'http';
-import SocketIO from 'socket.io';
+import { Server } from 'socket.io';
 
 const app = express();
 
@@ -13,9 +13,9 @@ app.get('/*', (_, res) => res.redirect('/'));
 const httpServer = http.createServer(app);
 
 /**
- * @type {SocketIO.Server}
+ * @type {Server}
  */
-const wsServer = SocketIO(httpServer);
+const wsServer = new Server(httpServer);
 
 function getPublicChannels() {
   return Array.from(wsServer.sockets.adapter.rooms)

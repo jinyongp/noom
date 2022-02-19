@@ -11,4 +11,4 @@ Zoom Clone Using NodeJS, WebRTC and Websocket.
 - [x] 채널 당 최대인원 두 명 제한
 - [x] 채널 참여 후 자신의 비디오/오디오 제어
 - [x] 채널 참여 후 타인의 비디오/오디오 출력
-- [ ] [DataChannels](https://webrtc.org/getting-started/data-channels)를 이용해 채팅 구현
+- [x] [DataChannels](https://webrtc.org/getting-started/data-channels)를 이용해 채팅 구현

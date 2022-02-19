@@ -6,8 +6,7 @@
     "start:dev": "nodemon",
     "start": "node dist/server",
     "clean": "rm -rf dist",
-    "prebuild": "yarn clean",
-    "build": "babel src -d dist --copy-files"
+    "build": "babel src -d dist --copy-files --minified --delete-dir-on-start --no-comments"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",

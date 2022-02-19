@@ -30,7 +30,7 @@ async function startUserMedia(constraints) {
 }
 
 function closeUserMedia() {
-  myMediaStream.getTracks().forEach((track) => track.stop());
+  myMediaStream?.getTracks().forEach((track) => track.stop());
 }
 
 async function initSelectDevices() {

@@ -47,14 +47,15 @@ html(lang="en")
         aside.side-bar-wrapper
           div.sub-video-wrapper
             video(autoplay playsinline)
-            select.camera-select
             div.input-controllers
-              button.mic-toggle.off
+              button.mic-toggle.on
                 i.fas.fa-microphone
                 i.fas.fa-microphone-slash
               button.cam-toggle.on
                 i.fas.fa-video
                 i.fas.fa-video-slash
+            select.mic-select
+            select.cam-select
           div.chat-box
             ul.participants
             ul.chat-list
@@ -63,7 +64,9 @@ html(lang="en")
               button
                 i.fas.fa-arrow-up
     script(src="/socket.io/socket.io.js")
+    script(src="/public/js/init.js")
     script(src="/public/js/dom.js")
+    script(src="/public/js/media.js")
     script(src="/public/js/event.js")
     script(src="/public/js/home.js")
     script(src="/public/js/channel.js")

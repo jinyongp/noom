@@ -1,8 +1,3 @@
-/**
- * @type {import('socket.io-client').Socket}
- */
-const socket = io();
-
 const homeScreen = document.querySelector('main.home');
 const createChannelForm = homeScreen.querySelector('.create-channel-form');
 const fullMessage = homeScreen.querySelector('.full');
@@ -16,9 +11,10 @@ const channelName = channelScreen.querySelector('.channel-name');
 const leaveChannelButton = channelScreen.querySelector('.leave-channel');
 const peerVideo = channelScreen.querySelector('.main-video-wrapper video');
 const myVideo = channelScreen.querySelector('.sub-video-wrapper video');
-const micToggle = channelScreen.querySelector('.mic-toggle');
-const camToggle = channelScreen.querySelector('.cam-toggle');
-const cameraSelect = channelScreen.querySelector('.camera-select');
+const micIcon = channelScreen.querySelector('.mic-toggle');
+const camIcon = channelScreen.querySelector('.cam-toggle');
+const micSelect = channelScreen.querySelector('.cam-select');
+const camSelect = channelScreen.querySelector('.cam-select');
 
 const chatBox = channelScreen.querySelector('.chat-box');
 const chatList = chatBox.querySelector('.chat-list');
@@ -26,6 +22,9 @@ const chatForm = chatBox.querySelector('.chat-form');
 const participants = chatBox.querySelector('.participants');
 
 let currentNickname = '';
+let currentChannel = '';
+let enabledMic = true;
+let enabledCam = true;
 
 /**
  *
@@ -118,4 +117,28 @@ function addNewChannel(channel) {
   li.dataset.name = channel;
 
   channelList.appendChild(li);
+}
+
+function turnOnMicIcon() {
+  micIcon.classList.remove('off');
+  micIcon.classList.add('on');
+  enabledMic = true;
+}
+
+function turnOffMicIcon() {
+  micIcon.classList.remove('on');
+  micIcon.classList.add('off');
+  enabledMic = false;
+}
+
+function turnOnCamIcon() {
+  camIcon.classList.remove('off');
+  camIcon.classList.add('on');
+  enabledCam = true;
+}
+
+function turnOffCamIcon() {
+  camIcon.classList.remove('on');
+  camIcon.classList.add('off');
+  enabledCam = false;
 }

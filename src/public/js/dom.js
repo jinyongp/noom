@@ -20,6 +20,8 @@ const camSelect = channelScreen.querySelector('.cam-select');
 const chatBox = channelScreen.querySelector('.chat-box');
 const chatList = chatBox.querySelector('.chat-list');
 const chatForm = chatBox.querySelector('.chat-form');
+const chatTextarea = chatForm.querySelector('textarea');
+const chatSubmitButton = chatForm.querySelector('button');
 const participants = chatBox.querySelector('.participants');
 
 let currentNickname = '';
@@ -100,6 +102,7 @@ function addNewMessage(type, message, nickname = '') {
   li.appendChild(messageText);
 
   chatList.appendChild(li);
+  chatList.scrollTop = chatList.scrollHeight - chatList.clientHeight;
 }
 
 /**
@@ -180,4 +183,9 @@ function addCamOption(value, label, currentCam) {
   if (currentCam === label) option.selected = true;
   camSelect.appendChild(option);
   camSelect.appendChild(option);
+}
+
+function receiveMessage({ data }) {
+  const { nickname, message } = JSON.parse(data);
+  addNewMessage('other', message, nickname);
 }

@@ -29,3 +29,20 @@ camSelect.addEventListener('input', async () => {
     videoSender.replaceTrack(myMediaStream.getVideoTracks()[0]);
   }
 });
+
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const message = event.target.elements.chat.value;
+  dataChannel?.send(JSON.stringify({ nickname: currentNickname, message }));
+  addNewMessage('me', message);
+  event.target.elements.chat.value = '';
+});
+
+chatTextarea.addEventListener('keydown', (event) => {
+  const { key, shiftKey, isComposing } = event;
+  if (isComposing) return;
+  if (key === 'Enter' && !shiftKey) {
+    event.preventDefault();
+    if (chatTextarea.value) chatSubmitButton.click();
+  }
+});

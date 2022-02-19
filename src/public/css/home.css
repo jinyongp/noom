@@ -97,13 +97,13 @@
   border-bottom-left-radius: 0;
 }
 
-.home .channel-list .header .nickname-form {
+.home .nickname-form {
   border-radius: 10px;
   background-color: white;
   position: relative;
 }
 
-.home .channel-list .header .nickname-form input {
+.home .nickname-form input {
   border: none;
   font-size: 16px;
   padding: 5px 30px 5px 10px;
@@ -111,7 +111,7 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
-.home .channel-list .header .nickname-form button {
+.home .nickname-form button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -122,25 +122,25 @@
   position: absolute;
 }
 
-.home .channel-list .header .nickname-form i {
+.home .nickname-form i {
   display: none;
 }
 
-.home .channel-list .header .nickname-form.changed button i:first-child {
+.home .nickname-form.changed button i:first-child {
   display: inline-block;
 }
 
-.home .channel-list .header .nickname-form.changing button i:last-child {
+.home .nickname-form.changing button i:last-child {
   display: inline-block;
   animation: rotation 1s linear infinite;
 }
 
-.home .channel-list .header .nickname-form.changing button i:last-child {
+.home .nickname-form.changing button i:last-child {
   display: inline-block;
   color: green;
 }
 
-.home .channel-list .header .active-count {
+.home .active-count {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -148,7 +148,7 @@
   font-weight: bold;
 }
 
-.home .channel-list .header .active-count::before {
+.home .active-count::before {
   content: '# of active channels ';
   font-size: 10px;
   font-weight: normal;
@@ -183,15 +183,15 @@
   overflow: hidden;
   display: flex;
   height: 60px;
+  width: 100%;
   cursor: pointer;
-  width: 105%;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.home .channel-list ul li:last-child {
-  border-bottom: none;
+.home .channel-list ul li:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .home .channel-list ul li h3 {
@@ -220,6 +220,7 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.2s ease-in-out;
+  transform: translateX(20px);
   color: var(--accent-color);
 }
 

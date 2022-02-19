@@ -1,8 +1,3 @@
-/**
- * @type {RTCPeerConnection}
- */
-let peerConnection = null;
-
 function initPeerConnection() {
   peerConnection = new RTCPeerConnection();
   peerConnection.addEventListener('icecandidate', (data) => {
@@ -22,6 +17,8 @@ function closePeerConnection() {
 
 async function sendOffer() {
   console.log('Send Offer');
+  dataChannel = peerConnection.createDataChannel('chat');
+  dataChannel.addEventListener('message', receiveMessage);
   const offer = await peerConnection.createOffer();
   await peerConnection.setLocalDescription(offer);
   socket.emit('offer', offer, currentChannel);
@@ -29,6 +26,10 @@ async function sendOffer() {
 
 async function sendAnswer(offer) {
   console.log('Send Answer');
+  peerConnection.addEventListener('datachannel', (event) => {
+    dataChannel = event.channel;
+    dataChannel.addEventListener('message', receiveMessage);
+  });
   await peerConnection.setRemoteDescription(offer);
   const answer = await peerConnection.createAnswer();
   await peerConnection.setLocalDescription(answer);

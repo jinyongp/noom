@@ -62,9 +62,9 @@ html(lang="en")
           div.chat-box
             ul.participants
             ul.chat-list
-            form.chat-form
-              textarea
-              button
+            form.chat-form(data-shortcut-tooltip="Enter: 전송, Shift+Enter: 줄바꿈")
+              textarea(name="chat")
+              button(type="submit")
                 i.fas.fa-arrow-up
     script(src="/socket.io/socket.io.js")
     script(src="/public/js/init.js")

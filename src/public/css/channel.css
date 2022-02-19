@@ -1,6 +1,6 @@
 main.channel {
+  width: 1280px;
   height: 100vh;
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,6 @@ main.channel[hidden] {
 }
 
 main.channel h1 {
-  width: 100%;
   padding-bottom: 30px;
   text-align: center;
   font-weight: 900;
@@ -22,7 +21,6 @@ main.channel h1 {
 main.channel nav {
   display: flex;
   gap: 10px;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
@@ -54,18 +52,19 @@ main.channel nav {
 .channel .container {
   flex: 1;
   display: flex;
-  gap: 5px;
+  min-height: 600px;
+  background-color: var(--accent-color);
+  border-radius: 0 0 5px 5px;
 }
 
 .channel .main-video-wrapper {
-  width: 100%;
-  max-width: 900px;
-  max-height: 680px;
-  border: var(--main-border);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
+  flex: 1;
   height: 100%;
+  border-left: var(--main-border);
+  border-bottom: var(--main-border);
+  border-radius: 5px;
   overflow: hidden;
+  background-color: white;
 }
 
 .channel .main-video-wrapper video {
@@ -78,15 +77,15 @@ main.channel nav {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 5px;
 }
 
 .channel .sub-video-wrapper {
   display: flex;
   flex-direction: column;
-  border: var(--main-border);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
+  height: 200px;
+  border-left: var(--main-border);
+  border-right: var(--main-border);
+  border-radius: 5px;
   overflow: hidden;
   background-color: var(--accent-color);
   position: relative;
@@ -94,7 +93,6 @@ main.channel nav {
 
 .channel .sub-video-wrapper video {
   width: 100%;
-  height: 100%;
   background-color: white;
 }
 

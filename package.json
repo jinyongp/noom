@@ -6,7 +6,6 @@
     "start:dev": "nodemon",
     "start": "node dist/server",
     "clean": "rm -rf dist",
-    "prestart": "yarn build",
     "prebuild": "yarn clean",
     "build": "babel src -d dist --copy-files"
   },

@@ -6,7 +6,6 @@ socket.on('init_nickname', (nickname) => {
 
 socket.on('channel_list', (channels) => {
   channelList.innerHTML = '';
-  console.log(channels);
   channels.forEach(addNewChannel);
   channelActiveCount.textContent = channels.length;
 });

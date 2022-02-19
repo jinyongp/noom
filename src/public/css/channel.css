@@ -21,6 +21,7 @@ main.channel h1 {
 
 main.channel nav {
   display: flex;
+  gap: 10px;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -31,6 +32,7 @@ main.channel nav {
 
 .channel nav .channel-name {
   color: white;
+  flex: 1;
 }
 
 .channel nav .leave-channel {
@@ -41,6 +43,7 @@ main.channel nav {
   background-color: white;
   border-radius: 5px;
   border: none;
+  z-index: 50;
 }
 
 .channel .channel-name::before {
@@ -117,11 +120,52 @@ main.channel nav {
   color: red;
 }
 
-.channel .mic-select,
-.channel .cam-select {
-  margin: 3px 0;
+.channel .device-select-button {
   border: none;
   border-radius: 3px;
+  padding: 4px;
+  background-color: white;
+  color: var(--accent-color);
+  cursor: pointer;
+  appearance: none;
+  z-index: 10;
+  height: 22px;
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.channel .device-select-button summary {
+  transform: translateY(-1px);
+  list-style: none;
+}
+
+.channel .device-select-button summary span {
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.channel .select-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+}
+
+.channel .mic-select {
+  border-radius: 3px 3px 0 0;
+  border: var(--main-border);
+  border-bottom: 0;
+}
+.channel .cam-select {
+  border-radius: 0 0 3px 3px;
+  border: var(--main-border);
+}
+
+.channel .mic-select,
+.channel .cam-select {
+  min-width: 100px;
+  border-width: 2px;
   padding: 2px;
   outline: none;
   text-overflow: clip;
@@ -226,7 +270,7 @@ main.channel nav {
 .channel .chat-box .participants {
   padding: 5px;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   gap: 5px;
   flex-wrap: wrap;

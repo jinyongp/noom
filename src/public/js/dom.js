@@ -13,7 +13,8 @@ const peerVideo = channelScreen.querySelector('.main-video-wrapper video');
 const myVideo = channelScreen.querySelector('.sub-video-wrapper video');
 const micIcon = channelScreen.querySelector('.mic-toggle');
 const camIcon = channelScreen.querySelector('.cam-toggle');
-const micSelect = channelScreen.querySelector('.cam-select');
+const deviceSelectButton = channelScreen.querySelector('.device-select-button');
+const micSelect = channelScreen.querySelector('.mic-select');
 const camSelect = channelScreen.querySelector('.cam-select');
 
 const chatBox = channelScreen.querySelector('.chat-box');
@@ -23,8 +24,10 @@ const participants = chatBox.querySelector('.participants');
 
 let currentNickname = '';
 let currentChannel = '';
-let enabledMic = true;
-let enabledCam = true;
+let enabledMic = false;
+let enabledCam = false;
+let currentMicId = '';
+let currentCamId = '';
 
 /**
  *
@@ -141,4 +144,35 @@ function turnOffCamIcon() {
   camIcon.classList.remove('on');
   camIcon.classList.add('off');
   enabledCam = false;
+}
+
+/**
+ * @param {string} value
+ * @param {string} label
+ * @param {string} currentMic
+ */
+function addMicOption(value, label, currentMic) {
+  const option = document.createElement('option');
+  option.value = value;
+  option.textContent = label;
+  if (currentMic === label) option.selected = true;
+  micSelect.appendChild(option);
+}
+
+/**
+ * @param {string} value
+ * @param {string} label
+ * @param {string} currentCam
+ */
+function addCamOption(value, label, currentCam) {
+  const option = document.createElement('option');
+  option.value = value;
+  option.label = label;
+  if (currentCam === label) option.selected = true;
+  camSelect.appendChild(option);
+  camSelect.appendChild(option);
+}
+
+function selectMicOption(value) {
+  myMediaStream.getAudioTracks()[0];
 }

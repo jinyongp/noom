@@ -15,7 +15,7 @@ createChannelForm.addEventListener('submit', (event) => {
   const input = event.target.elements.channel;
   enterChannel(input.value, () => {
     input.value = '';
-    initUserMedia();
+    initMedia();
   });
 });
 

@@ -1,8 +1,3 @@
-/**
- * @type {MediaStream}
- */
-let myMediaStream = null;
-
 async function initMedia() {
   await startUserMedia();
   await initSelectDevices();

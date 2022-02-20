@@ -33,6 +33,7 @@ camSelect.addEventListener('input', async () => {
 chatForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const message = event.target.elements.chat.value;
+  if (!message) return;
   dataChannel?.send(JSON.stringify({ nickname: currentNickname, message }));
   addNewMessage('me', message);
   event.target.elements.chat.value = '';

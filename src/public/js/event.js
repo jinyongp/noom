@@ -12,8 +12,13 @@ socket.on('channel_list', (channels) => {
 
 socket.on('someone_joined', (nickname) => {
   addNewMessage('notice', `${nickname}님이 입장했습니다.`);
-  initPeerConnection();
-  setTimeout(sendOffer, 300);
+  const interval = setInterval(() => {
+    if (myMediaStream) {
+      clearInterval(interval);
+      initPeerConnection();
+      sendOffer();
+    }
+  }, 500);
 });
 
 socket.on('someone_left', (nickname) => {

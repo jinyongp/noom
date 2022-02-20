@@ -6,6 +6,11 @@
 const socket = io();
 
 /**
+ * @type {MediaStream}
+ */
+let myMediaStream = null;
+
+/**
  * @type {RTCPeerConnection}
  */
 let peerConnection = null;

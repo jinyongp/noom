@@ -7,6 +7,7 @@ nicknameForm.addEventListener('submit', (event) => {
   socket.emit('update_nickname', nickname, () => {
     nicknameForm.classList.remove('changing');
     nicknameForm.classList.add('changed');
+    currentNickname = nickname;
   });
 });
 

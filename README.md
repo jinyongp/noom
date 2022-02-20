@@ -1,6 +1,8 @@
 # Noom
 
-Zoom Clone Using NodeJS, WebRTC and Websocket.
+Zoom Clone Using NodeJS, WebRTC and SocketIO.
+
+[Deploy Site](https://noom-jinyongp.herokuapp.com/)
 
 ## Todo List
 

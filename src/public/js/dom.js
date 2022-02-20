@@ -67,6 +67,7 @@ function enterChannel(channel, cb) {
 function leaveChannel(cb) {
   socket.emit('leave_channel', currentChannel, () => {
     currentChannel = '';
+    currentNickname = '';
     chatList.innerHTML = '';
     chatForm.querySelector('textarea').textContent = '';
     selectScreen('home');

@@ -16,11 +16,12 @@ async function startUserMedia(constraints) {
       },
       ...constraints,
     });
+  } catch (error) {
+    myMediaStream = null;
+  } finally {
     myVideo.srcObject = myMediaStream;
     enabledMic ? turnOnMic() : turnOffMic();
     enabledCam ? turnOnCam() : turnOffCam();
-  } catch (error) {
-    console.error(error);
   }
 }
 
@@ -29,6 +30,7 @@ function closeUserMedia() {
 }
 
 async function initSelectDevices() {
+  if (!myMediaStream) return;
   try {
     const mics = await getDevices('audioinput');
     const cams = await getDevices('videoinput');

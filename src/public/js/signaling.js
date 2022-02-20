@@ -7,6 +7,7 @@ function initPeerConnection() {
   peerConnection.addEventListener('track', (data) => {
     peerVideo.srcObject = data.streams[0];
   });
+  if (!myMediaStream) return;
   myMediaStream.getTracks().forEach((track) => peerConnection.addTrack(track, myMediaStream));
 }
 

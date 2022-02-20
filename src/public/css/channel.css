@@ -1,7 +1,4 @@
 main.channel {
-  width: 1280px;
-  height: 100vh;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -50,16 +47,14 @@ main.channel nav {
 }
 
 .channel .container {
-  flex: 1;
+  width: 1100px;
+  height: 600px;
   display: flex;
-  min-height: 600px;
   background-color: var(--accent-color);
   border-radius: 0 0 5px 5px;
 }
 
 .channel .main-video-wrapper {
-  flex: 1;
-  height: 100%;
   border-left: var(--main-border);
   border-bottom: var(--main-border);
   border-radius: 5px;
@@ -80,9 +75,7 @@ main.channel nav {
 }
 
 .channel .sub-video-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 200px;
+  width: 300px;
   border-left: var(--main-border);
   border-right: var(--main-border);
   border-radius: 5px;
@@ -241,11 +234,11 @@ main.channel nav {
   content: ':';
 }
 
-.channel .chat-box .chat-list li.me .sender-name::after {
+.channel .chat-box .chat-list .me .sender-name::after {
   content: 'Me:';
 }
 
-.channel .chat-box .chat-list li.me::after {
+.channel .chat-box .chat-list .me::after {
   right: 0;
   border-left-color: var(--accent-color);
   border-right: 0;
@@ -273,7 +266,7 @@ main.channel nav {
 }
 
 .channel .chat-box .chat-list li .message {
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .channel .chat-box .participants {
